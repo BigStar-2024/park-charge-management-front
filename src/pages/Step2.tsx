@@ -16,8 +16,7 @@ const Step2 = ({ active, setActive }: props) => {
   const dispatch = useAppDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
-  const [address2, setAddress2] = useState("");
+  const [address, setAddress] = useState(""); 
   const [city, setCity] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -107,21 +106,7 @@ const Step2 = ({ active, setActive }: props) => {
                     />
                   </div>
                 </div>
-                <div className="flex mt-4">
-                  <p className="text-base tracking-tighter mt-1 mr-6 font-medium">
-                    Address2
-                  </p>
-                  <div>
-                    <CustomizeInputText
-                      width="240px"
-                      placeholder="Address2"
-                      value={address2}
-                      onChange={(value) => {
-                        setAddress2(value);
-                      }}
-                    />
-                  </div>
-                </div>
+                
                 <div className="flex mt-4">
                   <p className="text-base tracking-tighter mt-1 mr-6 font-medium">
                     City
@@ -186,8 +171,7 @@ const Step2 = ({ active, setActive }: props) => {
                   <Stripe 
                     firstName={firstName}
                     lastName={lastName}
-                    address={address}
-                    address2={address2}
+                    address={address} 
                     city={city}
                     zipcode={zipcode}
                     phoneNumber={phoneNumber}
