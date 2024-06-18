@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://park-charge-management-back.onrender.com';
