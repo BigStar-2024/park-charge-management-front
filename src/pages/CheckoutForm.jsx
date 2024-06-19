@@ -145,7 +145,7 @@ export default function CheckoutForm(props) {
     paymentData.append("paymentData", JSON.stringify(props));
     paymentData.append("paymentEmail", email);
     paymentData.append("licensePlateNumber", licensePlateNumber);
-    window.alert(payAmount);
+    window.localStorage.setItem("payAmount", payAmount);
     paymentData.append("payAmount", payAmount)
     console.log("paymentData------------------>",paymentData);
     fetch(`${BASE_URL}/save_paymentdata`, {
