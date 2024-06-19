@@ -146,6 +146,8 @@ export default function CheckoutForm(props) {
     paymentData.append("paymentEmail", email);
     paymentData.append("licensePlateNumber", licensePlateNumber)
     paymentData.append("payAmount", payAmount)
+    alert(payAmount);
+    console.log("afae",paymentData);
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
       body: paymentData
