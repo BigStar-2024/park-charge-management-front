@@ -23,7 +23,9 @@ export default function Stripe(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: [{ id: "xl-tshirt", payAmount: totalPayAmount }] }),
     })
-      .then((res) => res.json())
+      .then((res) => {res.json();
+        console.log(res.json())
+      })
       .then((data) => setClientSecret(data.clientSecret));
   }, [totalPayAmount]);
 
