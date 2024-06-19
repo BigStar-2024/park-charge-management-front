@@ -144,10 +144,10 @@ export default function CheckoutForm(props) {
     const paymentData = new FormData();
     paymentData.append("paymentData", JSON.stringify(props));
     paymentData.append("paymentEmail", email);
-    paymentData.append("licensePlateNumber", licensePlateNumber)
+    paymentData.append("licensePlateNumber", licensePlateNumber);
+    window.alert(payAmount);
     paymentData.append("payAmount", payAmount)
-    alert(payAmount);
-    console.log("afae",paymentData);
+    console.log("paymentData------------------>",paymentData);
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
       body: paymentData
