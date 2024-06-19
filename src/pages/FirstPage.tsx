@@ -97,7 +97,7 @@ const First = () => {
       fetch(`${BASE_URL}/set-license`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           plateNumber: plateNumber,
