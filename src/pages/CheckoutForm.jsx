@@ -9,7 +9,6 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import { licensePlateNumber } from "../redux/slice/payReducer";
 
 export default function CheckoutForm(props) {
   const stripe = useStripe();
@@ -145,7 +144,11 @@ export default function CheckoutForm(props) {
     const paymentData = new FormData();
     paymentData.append("paymentData", JSON.stringify(props));
     paymentData.append("paymentEmail", email);
-    paymentData.append("licensePlateNumber", licensePlateNumber)
+    paymentData.append("licensePlateNumber", licensePlateNumber);
+
+    window.localStorage.setItem("payAmountItem", payAmount);
+    paymentData.append("payAmount", payAmount)
+    console.log("paymentData------------------>",paymentData);
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
       body: paymentData
