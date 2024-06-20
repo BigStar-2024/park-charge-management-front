@@ -140,8 +140,7 @@ export default function CheckoutForm(props) {
     }
   }
 
-  const savePaymentData = () => {
-    console.log(payAmount)
+  const savePaymentData = () => { 
 
     const paymentData = new FormData();
     paymentData.append("paymentData", JSON.stringify(props));
@@ -153,6 +152,10 @@ export default function CheckoutForm(props) {
       method: 'POST',
       body: paymentData
     })
+  }
+
+  const getPaymentlist = () => {
+    
   }
 
   const nodemailer = async () => {
