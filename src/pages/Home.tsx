@@ -134,7 +134,6 @@ const Home = () => {
                           width="240px"
                           label="Parking Charge Number"
                           value={parkingChargeNumber}
-                          valueType="parkingChargeNumber"
                           onChange={(value) => {
                             setParkingChargeNumber(value);
                             dispatch(parkingChargeNumber_redux(String(value)));
@@ -175,7 +174,6 @@ const Home = () => {
                           width="240px"
                           label="Plate Number"
                           value={plateNumber}
-                          valueType="plateNumber"
                           onChange={(value) => {
                             setPlateNumber(value);
                             dispatch(licensePlateNumber(String(value)));

@@ -142,7 +142,6 @@ const First = () => {
                 width="316px"
                 label="Parking Charge Number"
                 value={parkingChargeNumber}
-                valueType="parkingChargeNumber"
                 onChange={(value) => {
                   setParkingChargeNumber(value);
                   dispatch(parkingChargeNumber_redux(String(value)));
@@ -162,7 +161,6 @@ const First = () => {
                   width="180px"
                   label="Plate Number"
                   value={plateNumber}
-                  valueType="plateNumber"
                   onChange={(value) => {
                     setPlateNumber(value);
                     dispatch(licensePlateNumber(String(value)));

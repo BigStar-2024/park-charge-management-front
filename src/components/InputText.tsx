@@ -14,7 +14,6 @@ interface StateTextFieldsProps {
   width: string;
   label: string;
   value: string; // Add value prop
-  valueType: string;
   onChange: (value: string) => void; // Add onChange prop
 }
 
@@ -22,35 +21,9 @@ export default function StateTextFields({
   width,
   label,
   value,
-  valueType,
   onChange,
 }: StateTextFieldsProps) {
 
-  // Dummy data. Uncomment the following when using redux selector.
-  const violationList = useAppSelector(
-    (state) => state.pay.violationList_redux
-  );
-  
-  const handleInputChange = (_event: React.ChangeEvent<{}>, newInputValue: string) => {
-    onChange(newInputValue);
-  };
-
-  const handleSelectionChange = (_event: React.ChangeEvent<{}>, newValue: OptionType | null) => {
-    if (newValue !== null) {
-      onChange(newValue.label);
-    }
-  };
-
-  const options: OptionType[] =
-    valueType === "plateNumber"
-      ? violationList.map((item: Violation) => ({
-          key: item.parkingChargeNumber,
-          label: item.plateNumber,
-        }))
-      : violationList.map((item: Violation) => ({
-          key: item.parkingChargeNumber,
-          label: item.parkingChargeNumber,
-        }));
 
   return (
     <Box
