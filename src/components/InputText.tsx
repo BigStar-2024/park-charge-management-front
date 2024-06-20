@@ -67,30 +67,13 @@ export default function StateTextFields({
       noValidate
       autoComplete="on"
     >
-      <Autocomplete
-        id="combo-box-demo"
-        value={options.find((option: OptionType) => option.label === value) || null}
-        options={options}
-        getOptionLabel={(option: OptionType) => option.label}
-        isOptionEqualToValue={(option: OptionType, value: OptionType) => option.key === value.key}
-        renderOption={(props, option: OptionType) => (
-          <li {...props} key={option.key}>
-            {option.label}
-          </li>
-        )}
-        onChange={handleSelectionChange}
-        onInputChange={handleInputChange}
-        renderInput={(params) => (
-          <TextField
-            {...params}
+      <TextField
             id="outlined-controlled"
             label={label}
             value={value}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               onChange(event.target.value);
             }}
-          />
-        )}
       />
     </Box>
   );

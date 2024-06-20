@@ -38,7 +38,7 @@ const First = () => {
   useEffect(() => {
     if (parkingChargeNumber !== "") {
       const selectedViolation = violationList.find(
-        (violation : Violation) => violation.parkingChargeNumber === parkingChargeNumber
+        (violation : Violation) => violation.parkingChargeNumber == parkingChargeNumber
       );
       if (selectedViolation !== undefined) {
         setPlateNumber(selectedViolation.plateNumber);
