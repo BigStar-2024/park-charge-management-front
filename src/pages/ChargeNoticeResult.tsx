@@ -14,6 +14,7 @@ const ParkingChargeNoticeResult = () => {
   const navigate = useNavigate();
 
   const currentViolation: Violation = useAppSelector((state) => state.currentViolation);
+  const violaionSelectedToPay: Violation = useAppSelector((state) => state.violationSelectedTopay);
   dispatch(
     payAmount_redux(Number(currentViolation.delay_fee + currentViolation.fee))
   );
@@ -67,7 +68,7 @@ const ParkingChargeNoticeResult = () => {
         {active && (
           <div className="payNow w-full absolute h-auto pt-4 pb-2 flex bg-[#9ec5ff] justify-center pl-[320px]">
             <div className="text-[#091C62] pr-6 text-lg font-semibold pt-2">
-              Amount To Pay: ${payAmount}
+              Amount To Pay: ${violaionSelectedToPay.fee + violaionSelectedToPay.delay_fee}
             </div>
             <div onClick={handlePayPage}>
               <BasicButtons

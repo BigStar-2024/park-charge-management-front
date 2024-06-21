@@ -2,13 +2,6 @@ import { useAppSelector } from "../redux/hooks";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import Violation from "../utility/type";
-
-interface OptionType {
-  key: string;
-  label: string;
-}
 
 interface StateTextFieldsProps {
   width: string;

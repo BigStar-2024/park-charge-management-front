@@ -18,39 +18,42 @@ function Completion(props) {
   const [createDate, setCreateDate] = useState('');
   const [receiptEmail, setReceiptEmail] = useState('');
   const [status, setStatus] = useState('');
+
   const handleHome = () => {
     navigate('/')
   }
 
 
   useEffect(() => {
-    setLicensePlateNumber(localStorage.getItem("licensePlate"));
-    setParkName(localStorage.getItem('Lot'))
-    
+    const localStorageVar = localStorage.getItem('violationData');
+    const parsedVar = JSON.parse(localStorageVar)
+    setLicensePlateNumber(parsedVar.plateNumber);
+    setParkName(parsedVar.lot)
 
-      axios.get(`${BASE_URL}/payments_log`, {
-        headers: {
-          'ngrok-skip-browser-warning': 'true'
-        }
+
+    axios.get(`${BASE_URL}/payments_log`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
+      .then(res => {
+        const data = res.data.data
+        console.log("data===>", data);
+        setAmount(data.amount / 100);
+
+        const timestamp = data.created * 1000;
+        const date = new Date(timestamp); // Convert timestamp to Date object
+        // const formattedDate = date.toI(); // Get the date in a readable format
+        const options = { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const formattedDate = date.toLocaleString('en-US', options); // Get date and time in EDT format
+        setCreateDate(formattedDate)
+
+        setReceiptEmail(data.receipt_email)
+        setStatus(data.status)
       })
-        .then(res => {
-          const data = res.data.data
-          console.log("data===>", data);
-          setAmount(data.amount / 100);
-
-          const timestamp = data.created * 1000;
-          const date = new Date(timestamp); // Convert timestamp to Date object
-          // const formattedDate = date.toI(); // Get the date in a readable format
-          const options = { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-          const formattedDate = date.toLocaleString('en-US', options); // Get date and time in EDT format
-          setCreateDate(formattedDate)
-
-          setReceiptEmail(data.receipt_email)
-          setStatus(data.status)
-        })
-        .catch(error => {
-          console.log("Error:", error);
-        });
+      .catch(error => {
+        console.log("Error:", error);
+      });
   }, [])
 
   useEffect(() => {
@@ -67,7 +70,7 @@ function Completion(props) {
     });
   }, [stripePromise]);
 
-  
+
 
   return (
     <>
@@ -114,12 +117,37 @@ function Completion(props) {
                   <img className="w-[180px] border h-auto" src={success} alt='resultImg'></img>
                 </div>
                 <div className="flex flex-col items-center  justify-center mb-4">
-                  <p className="text-black text-opacity-80 text-4xl font-bold my-4">Payment {parkName},{parkName}, {licensePlateNumber}, {amount}, {createDate}, {receiptEmail},  {status}!</p>
+                  <p className="text-black text-opacity-80 text-4xl font-bold my-4">Payment {status}!</p>
+                  <div>
+                    <div className="flex flex-col p-2">
+                      <div className="flex float-left">
+                        <p className='text-xl text-[grey] font-bold mt-4'>Lot : </p>
+                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {parkName}</p>
+                      </div>
+                      <div className="flex float-left">
+                        <p className='text-xl text-[grey] font-bold mt-4'>Plate Number : </p>
+                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {licensePlateNumber}</p>
+                      </div>
+                      <div className="flex float-left">
+                        <p className='text-xl text-[grey] font-bold mt-4'>Amount : </p>
+                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> ${amount}</p>
+                      </div>
+                      <div className="flex float-left">
+                        <p className='text-xl text-[grey] font-bold mt-4'>Receipt Email : </p>
+                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {receiptEmail}</p>
+                      </div>
+                      <div className="flex">
+                        <p className='text-xl text-[grey] font-bold mt-4'>Payment Date (EDT) : </p>
+                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {createDate}</p>
+                      </div>
+
+                    </div>
+                  </div>
                   <p className="text-black text-base font-semibold">Your Parking Charge Notice has been paid successfully</p>
                   {<p className="text-red-500">{messageBody}</p>}
-                  
+
                 </div>
-                
+
               </div>
 
             </div>

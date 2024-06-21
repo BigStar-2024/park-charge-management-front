@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import BasicButtons from "./Button";
 import ViewDetailModal from "./ViewDetailModal";
 import Violation from "../utility/type";
+import { useAppDispatch } from "../redux/hooks";
+import { setSelectedViolation } from "../redux/slice/violationSelectedTopayReducer";
+
 
 interface props {
   active: boolean;
@@ -14,6 +17,7 @@ const Notice = ({
   setActive,
   violationData
 }: props) => {
+  const dispatch = useAppDispatch()
   const [buttonText, setButtonText] = useState("Pay");
   // const licensePlateNumber = useAppSelector(
   //   (state) => state.pay.licensePlateNumber
@@ -21,6 +25,7 @@ const Notice = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const payNow = () => {
+    dispatch(setSelectedViolation(violationData));
     setActive(!active);
     setButtonText((prevText) => {
       return prevText === "Pay" ? "Unselect" : "Pay";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Notice2 from "../components/Notice2";
 import SelectIndicator from "../components/SelectState";
 import CustomizeInputText from "../components/CustomizeInputText";
@@ -21,10 +21,11 @@ const Step2 = ({ active, setActive }: props) => {
   const [zipcode, setZipcode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [stateLocation, setStateLocation] = useState("");
-  const payAmount = useAppSelector((state) => state.pay.payAmount_redux)
-  const payAmount_string = String(payAmount)
+  const violationSelectedToPay = useAppSelector((state) => state.violationSelectedTopay)
 
-
+  useEffect(() => {
+     localStorage.setItem("violationData", JSON.stringify(violationSelectedToPay))
+  }, [violationSelectedToPay])
   return (
     <>
       <div className="py-4 px-4">
@@ -38,18 +39,16 @@ const Step2 = ({ active, setActive }: props) => {
         <p className="mt-4 mx-1 mb-2 text-base">Parking Charge Notice(s)</p>
         <div className="px-1 mb-4">
           <Notice2
-            paying_id="#53274633"
-            paying_amount={payAmount_string}
-            issueDate="12/01/2022"
+            violationData={violationSelectedToPay}
           />
         </div>
         <div className="h-auto border border-[#091C62] flex flex-col items-end px-4 py-2 mx-1">
-          <p className="text-base font-medium">Parking Charge Notice: ${payAmount}</p>
+          <p className="text-base font-medium">Parking Charge Notice: ${violationSelectedToPay.fee + violationSelectedToPay.delay_fee}</p>
           <p className="text-base font-medium">
-            Online Payment Convenience: $4.99
+            Online Payment Convenience: $4.99 ??
           </p>
           <p className="text-base font-medium">
-            Total Parking Charge Notice: $94.99
+            Total Parking Charge Notice: $94.99 ??
           </p>
         </div>
         <div>

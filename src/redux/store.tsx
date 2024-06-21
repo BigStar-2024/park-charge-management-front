@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import payReducer from '../redux/slice/payReducer';
 import currentViolationReducer from '../redux/slice/currentViolationReducer';
+import violationSelectedTopayReducer from './slice/violationSelectedTopayReducer';
 
 export const store = configureStore({
   reducer: {
     pay: payReducer,
-    currentViolation: currentViolationReducer
+    currentViolation: currentViolationReducer,
+    violationSelectedTopay: violationSelectedTopayReducer,
   },
 });
 
