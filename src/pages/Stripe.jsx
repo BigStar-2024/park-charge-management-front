@@ -18,6 +18,7 @@ export default function Stripe(props) {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
+    console.log("why send requests twice?");
     fetch(`${BASE_URL}/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,7 +28,7 @@ export default function Stripe(props) {
         return await res.json();
       })
       .then((data) => setClientSecret(data.clientSecret));
-  }, [totalPayAmount]);
+  }, []);
 
   const appearance = {
     theme: 'stripe',
