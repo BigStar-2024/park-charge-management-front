@@ -155,7 +155,7 @@ export default function CheckoutForm(props) {
   }
 
   const getPaymentlist = () => {
-    
+
   }
 
   const nodemailer = async () => {
@@ -231,6 +231,7 @@ export default function CheckoutForm(props) {
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit" className="submit" onClick={nodemailer}>
+      {/* <button disabled={isLoading || !stripe || !elements} id="submit" className="submit"> */}
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
