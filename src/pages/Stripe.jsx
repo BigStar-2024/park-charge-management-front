@@ -28,7 +28,7 @@ export default function Stripe(props) {
         return await res.json();
       })
       .then((data) => setClientSecret(data.clientSecret));
-  }, []);
+  }, [totalPayAmount]);
 
   const appearance = {
     theme: 'stripe',

@@ -154,9 +154,6 @@ export default function CheckoutForm(props) {
     })
   }
 
-  const getPaymentlist = () => {
-
-  }
 
   const nodemailer = async () => {
 

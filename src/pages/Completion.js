@@ -22,34 +22,11 @@ function Completion(props) {
     navigate('/')
   }
 
-  // useEffect(() => {
-  //   setLicensePlateNumber(localStorage.getItem("licensePlate"));
-  //   setParkName(localStorage.getItem('Lot'))
-  //   axios.get(`${BASE_URL}/payments_log`)
-  //     .then(res => {
-  //       const data = res.data.data
-  //       console.log(data);
-  //       setAmount(data.amount / 100);
-
-  //       const timestamp = data.created * 1000;
-  //       const date = new Date(timestamp); // Convert timestamp to Date object
-  //       // const formattedDate = date.toI(); // Get the date in a readable format
-  //       const options = { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-  //       const formattedDate = date.toLocaleString('en-US', options); // Get date and time in EDT format
-  //       setCreateDate(formattedDate)
-
-  //       setReceiptEmail(data.receipt_email)
-  //       setStatus(data.status)
-  //     })
-  //     .catch(error => {
-  //       console.log("Error:", error);
-  //     });
-  // }, [])
 
   useEffect(() => {
     setLicensePlateNumber(localStorage.getItem("licensePlate"));
     setParkName(localStorage.getItem('Lot'))
-    const timer = setTimeout(() => {
+    
 
       axios.get(`${BASE_URL}/payments_log`, {
         headers: {
@@ -74,8 +51,6 @@ function Completion(props) {
         .catch(error => {
           console.log("Error:", error);
         });
-    }, 3000);
-    return () => clearTimeout(timer);
   }, [])
 
   useEffect(() => {
@@ -139,7 +114,7 @@ function Completion(props) {
                   <img className="w-[180px] border h-auto" src={success} alt='resultImg'></img>
                 </div>
                 <div className="flex flex-col items-center  justify-center mb-4">
-                  <p className="text-black text-opacity-80 text-4xl font-bold my-4">Payment {parkName}, {licensePlateNumber}, {amount}, {createDate}, {receiptEmail},  {status}!</p>
+                  <p className="text-black text-opacity-80 text-4xl font-bold my-4">Payment {parkName},{parkName}, {licensePlateNumber}, {amount}, {createDate}, {receiptEmail},  {status}!</p>
                   <p className="text-black text-base font-semibold">Your Parking Charge Notice has been paid successfully</p>
                   {<p className="text-red-500">{messageBody}</p>}
                   
