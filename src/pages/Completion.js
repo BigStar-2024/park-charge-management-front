@@ -111,44 +111,49 @@ function Completion(props) {
             <div className="border-x border-[#FA551D] w-full h-auto">
               <Step3 active={active} setActive={setActive} />
             </div>
-            <div className="p-4 border-x border-[#FA551D] mb-8">
-              <div className="flex border bg-[#ffbfa1] bg-opacity-50 w-full rounded-[10px] h-auto">
-                <div className="flex justify-center ml-8 items-center relative">
-                  <img className="w-[180px] border h-auto" src={success} alt='resultImg'></img>
-                </div>
-                <div className="flex flex-col items-center  justify-center mb-4">
-                  <p className="text-black text-opacity-80 text-4xl font-bold my-4">Payment {status}!</p>
-                  <div>
-                    <div className="flex flex-col p-2">
-                      <div className="flex float-left">
-                        <p className='text-xl text-[grey] font-bold mt-4'>Lot : </p>
-                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {parkName}</p>
-                      </div>
-                      <div className="flex float-left">
-                        <p className='text-xl text-[grey] font-bold mt-4'>Plate Number : </p>
-                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {licensePlateNumber}</p>
-                      </div>
-                      <div className="flex float-left">
-                        <p className='text-xl text-[grey] font-bold mt-4'>Amount : </p>
-                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> ${amount}</p>
-                      </div>
-                      <div className="flex float-left">
-                        <p className='text-xl text-[grey] font-bold mt-4'>Receipt Email : </p>
-                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {receiptEmail}</p>
-                      </div>
-                      <div className="flex">
-                        <p className='text-xl text-[grey] font-bold mt-4'>Payment Date (EDT) : </p>
-                        <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {createDate}</p>
-                      </div>
+            <div className="p-4 border-x border-[#FA551D] mb-0">
 
-                    </div>
+              <div className="flex flex-col border bg-[#ffbfa1] bg-opacity-50 w-full rounded-[10px] h-auto">
+                <div className="flex">
+                  <div className="flex justify-center ml-8 items-center relative">
+                    <img className="w-[150px] border h-auto" src={success} alt='resultImg'></img>
                   </div>
-                  <p className="text-black text-base font-semibold">Your Parking Charge Notice has been paid successfully</p>
-                  {<p className="text-red-500">{messageBody}</p>}
+                  <div className="flex flex-col items-center  justify-center mb-4">
+                    <p className="text-[#091C62] text-opacity-80 text-4xl font-bold my-4">Payment {status}!</p>
 
+                    <p className="text-black text-base font-semibold">Your Parking Charge Notice has been paid successfully</p>
+                    {<p className="text-red-500">{messageBody}</p>}
+                  </div>
                 </div>
 
+                <div className="flex justify-center border rounded-[10px] border-[#091C62] bg-[white] mb-4 mx-10">
+                  <div className="flex flex-col p-2">
+                    <div className="flex float-left">
+                      <p className='text-xl text-[brown] font-bold mt-4'>Lot : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {parkName}</p>
+                    </div>
+                    <div className="flex float-left">
+                      <p className='text-xl text-[brown] font-bold mt-4'>Plate Number : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {licensePlateNumber}</p>
+                    </div>
+                    <div className="flex float-left">
+                      <p className='text-xl text-[brown] font-bold mt-4'>Amount : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> ${amount}</p>
+                    </div>
+                    <div className="flex float-left">
+                      <p className='text-xl text-[brown] font-bold mt-4'>Receipt Email : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {receiptEmail}</p>
+                    </div>
+                    <div className="flex">
+                      <p className='text-xl text-[brown] font-bold my-4'>Payment Date (EDT) : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {createDate}</p>
+                    </div>
+
+                  </div>
+                </div>
               </div>
+            </div>
+            <div>
 
             </div>
             <div className="flex bg-[#FA551D] w-full h-auto rounded-b-[10px] items-center">

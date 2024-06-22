@@ -19,12 +19,16 @@ export default function CheckoutForm(props) {
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [parkName, setParkName] = useState('');
 
   const [pdfDoc, setPDFDoc] = useState(null);
   const payAmount = useAppSelector((state) => state.pay.payAmount_redux)
   const firstName = useAppSelector((state) => state.pay.firstName_redux)
   const lastName = useAppSelector((state) => state.pay.lastName_redux)
   const licensePlateNumber = useAppSelector((state) => state.pay.licensePlateNumber)
+  const localStorageVar = localStorage.getItem('violationData');
+  const parsedVar = JSON.parse(localStorageVar)
+  setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -141,12 +145,14 @@ export default function CheckoutForm(props) {
   }
 
   const savePaymentData = () => { 
+  
 
     const paymentData = new FormData();
     paymentData.append("paymentData", JSON.stringify(props));
     paymentData.append("paymentEmail", email);
     paymentData.append("licensePlateNumber", licensePlateNumber);
     paymentData.append("payAmount", payAmount)
+    paymentData.append("parkName", parkName)
     
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
