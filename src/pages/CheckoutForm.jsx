@@ -19,7 +19,7 @@ export default function CheckoutForm(props) {
 
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [parkName, setParkName] = useState('');
+  // const [parkName, setParkName] = useState('');
 
   const [pdfDoc, setPDFDoc] = useState(null);
   const payAmount = useAppSelector((state) => state.pay.payAmount_redux)
@@ -28,6 +28,7 @@ export default function CheckoutForm(props) {
   const licensePlateNumber = useAppSelector((state) => state.pay.licensePlateNumber)
   const localStorageVar = localStorage.getItem('violationData');
   const parsedVar = JSON.parse(localStorageVar)
+  const parkName = parsedVar.lot;
   // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
