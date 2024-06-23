@@ -29,6 +29,7 @@ export default function CheckoutForm(props) {
   const localStorageVar = localStorage.getItem('violationData');
   const parsedVar = JSON.parse(localStorageVar)
   const parkName = parsedVar.lot;
+  console.log('dsfae', parkName)
   // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
