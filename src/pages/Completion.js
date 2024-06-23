@@ -108,9 +108,9 @@ function Completion(props) {
             <div className="bg-[#FA551D] w-full py-3 px-5 text-white text-2xl rounded-t-[10px] font-medium">
               Step2: Payment Details
             </div>
-            <div className="border-x border-[#FA551D] w-full h-auto">
+            {/* <div className="border-x border-[#FA551D] w-full h-auto">
               <Step3 active={active} setActive={setActive} />
-            </div>
+            </div> */}
             <div className="p-4 border-x border-[#FA551D] mb-0">
 
               <div className="flex flex-col border bg-[#ffbfa1] bg-opacity-50 w-full rounded-[10px] h-auto">
