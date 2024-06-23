@@ -28,7 +28,7 @@ export default function CheckoutForm(props) {
   const licensePlateNumber = useAppSelector((state) => state.pay.licensePlateNumber)
   const localStorageVar = localStorage.getItem('violationData');
   const parsedVar = JSON.parse(localStorageVar)
-  setParkName(parsedVar.lot)
+  // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
       const response = await axios.get(
@@ -84,7 +84,7 @@ export default function CheckoutForm(props) {
           break;
       }
     });
-  }, [stripe]);
+  }, []);
   // -------------------------------------------------------------
   const currentDateTime = new Date(Date.now());
 
