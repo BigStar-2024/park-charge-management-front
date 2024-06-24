@@ -31,6 +31,7 @@ export default function CheckoutForm(props) {
   const parkName = parsedVar.lot;
   const parkingChargeNumber = parsedVar.parkingChargeNumber;
   const payAmount = parsedVar.fee + parsedVar.delay_fee;
+  const issue_date = parsedVar.issue_date;
   // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
@@ -157,6 +158,7 @@ export default function CheckoutForm(props) {
     paymentData.append("payAmount", payAmount);
     paymentData.append("parkName", parkName);
     paymentData.append('parkingChargeNumber', parkingChargeNumber);
+    paymentData.append('issue_date',issue_date);
     
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
