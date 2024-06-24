@@ -15,11 +15,10 @@ const stripePromise = loadStripe("pk_test_51P2lpQC9Zd6I2Ms1GoO6Yk32LekVgzJldgAwf
 export default function Stripe(props) {
   const [clientSecret, setClientSecret] = useState("");
   const violationSelectedTopay = useAppSelector((state) => state.violationSelectedTopay)
-  console.log(violationSelectedTopay);
+  // console.log(violationSelectedTopay);
   const totalPayAmount = violationSelectedTopay.delay_fee + violationSelectedTopay.fee
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    console.log("why send requests twice?");
     fetch(`${BASE_URL}/create-payment-intent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
