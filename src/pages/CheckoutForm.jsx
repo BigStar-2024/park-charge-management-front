@@ -22,7 +22,7 @@ export default function CheckoutForm(props) {
   // const [parkName, setParkName] = useState('');
 
   const [pdfDoc, setPDFDoc] = useState(null);
-  const payAmount = useAppSelector((state) => state.pay.payAmount_redux)
+  
   const firstName = useAppSelector((state) => state.pay.firstName_redux)
   const lastName = useAppSelector((state) => state.pay.lastName_redux)
   const licensePlateNumber = useAppSelector((state) => state.pay.licensePlateNumber)
@@ -30,6 +30,7 @@ export default function CheckoutForm(props) {
   const parsedVar = JSON.parse(localStorageVar)
   const parkName = parsedVar.lot;
   const parkingChargeNumber = parsedVar.parkingChargeNumber;
+  const payAmount = parsedVar.fee + parsedVar.delay_fee;
   // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {

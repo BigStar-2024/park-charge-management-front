@@ -23,9 +23,9 @@ const Step2 = ({ active, setActive }: props) => {
   const [stateLocation, setStateLocation] = useState("");
   const violationSelectedToPay = useAppSelector((state) => state.violationSelectedTopay)
 
-  // useEffect(() => {
-  //    localStorage.setItem("violationData", JSON.stringify(violationSelectedToPay))
-  // }, [violationSelectedToPay])
+  useEffect(() => {
+     localStorage.setItem("violationData", JSON.stringify(violationSelectedToPay))
+  }, [violationSelectedToPay])
   return (
     <>
       <div className="py-4 px-4">
