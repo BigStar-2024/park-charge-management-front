@@ -29,7 +29,7 @@ export default function CheckoutForm(props) {
   const localStorageVar = localStorage.getItem('violationData');
   const parsedVar = JSON.parse(localStorageVar)
   const parkName = parsedVar.lot;
-  console.log('dsfae', parkName)
+  const parkingChargeNumber = parsedVar.parkingChargeNumber;
   // setParkName(parsedVar.lot)
   const fetchData = async () => {
     try {
@@ -153,8 +153,9 @@ export default function CheckoutForm(props) {
     paymentData.append("paymentData", JSON.stringify(props));
     paymentData.append("paymentEmail", email);
     paymentData.append("licensePlateNumber", licensePlateNumber);
-    paymentData.append("payAmount", payAmount)
-    paymentData.append("parkName", parkName)
+    paymentData.append("payAmount", payAmount);
+    paymentData.append("parkName", parkName);
+    paymentData.append('parkingChargeNumber', parkingChargeNumber);
     
     fetch(`${BASE_URL}/save_paymentdata`, {
       method: 'POST',
