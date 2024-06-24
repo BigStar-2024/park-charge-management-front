@@ -48,7 +48,7 @@ const Notice2 = ({
             View More Information
           </button>
         </div>
-        <ViewDetailModal2 isOpen={isModalOpen} onClose={closeModal} />
+        <ViewDetailModal2 isOpen={isModalOpen} onClose={closeModal} violationData={violationData}/>
       </div>
     </>
   );

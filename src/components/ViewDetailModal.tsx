@@ -169,7 +169,7 @@ const ViewDetailModal: React.FC<ModalProps> = ({ isOpen, onClose, violationData 
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Officer:</div>
-              <div>FLL-Failure to Pay</div>
+              <div>??</div>
             </div>
           </div>
           <div className="border-x w-full h-auto px-4">

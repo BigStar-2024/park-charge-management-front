@@ -6,13 +6,15 @@ import closeBtn from "./assets/Closebtn.svg";
 import BasicButtons from "./Button";
 import { PDFDocument } from "pdf-lib";
 import { BASE_URL } from "../config";
+import Violation from "../utility/type";
 
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  violationData: Violation;
 };
 
-const ViewDetailModal2: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const ViewDetailModal2: React.FC<ModalProps> = ({ isOpen, onClose, violationData}) => {
   // const [isModalOpen, setIsModalOpen] = useState(false);
   const [pdfDoc, setPDFDoc] = useState<PDFDocument | null>(null);
   const licensePlateNumber = useAppSelector(
@@ -136,23 +138,23 @@ const ViewDetailModal2: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           <div className="p-4 flex flex-col">
             <div className="flex justify-between border rounded-t-[5px] text-base py-2 px-4">
               <div>Parking Charge Notice Number:</div>
-              <div>43727753</div>
+              <div>{violationData.parkingChargeNumber}</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Created:</div>
-              <div>09/21/2022</div>
+              <div>{violationData.issue_date}</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Location:</div>
-              <div>FLL444(1000)</div>
+              <div>{violationData.lot}</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>License Plate:</div>
-              <div>(FL){licensePlateNumber}</div>
+              <div>{violationData.plateNumber}</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>VIN:</div>
-              <div>1FMRE11WX4HA98250</div>
+              <div>??</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Parking Charge Notice:</div>
@@ -160,19 +162,19 @@ const ViewDetailModal2: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Vehicle Color:</div>
-              <div>Black</div>
+              <div>??</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Vehicle Make:</div>
-              <div>Ford</div>
+              <div>??</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Vehicle Model:</div>
-              <div>Econoline Cargo</div>
+              <div>??</div>
             </div>
             <div className="flex justify-between border-x border-b text-base py-2 px-4">
               <div>Officer:</div>
-              <div>FLL-Failure to Pay</div>
+              <div>??</div>
             </div>
           </div>
           <div className="border-x w-full h-auto px-4">
@@ -196,12 +198,12 @@ const ViewDetailModal2: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div className="flex flex-col w-full h-auto tracking-tight">
               <div className="flex justify-between border-x border-b border-[#grey] px-4 py-2">
-                <p>Total Parking Charge Notice</p>
-                <p>$55.00</p>
+                <p>Parking Charge Notice</p>
+                <p>${violationData.fee}</p>
               </div>
               <div className="flex justify-between border-x border-b border-[#grey] px-4 py-2 rounded-b-[10px]">
-                <p>10/06/22 Late Amount</p>
-                <p>$35.00</p>
+                {/* <p>{new Date().toLocaleString()} Late Amount</p> */}
+                <p>${violationData.delay_fee}</p>
               </div>
             </div>
           </div>

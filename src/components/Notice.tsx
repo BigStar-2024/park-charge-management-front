@@ -63,8 +63,8 @@ const Notice = ({
             <p className="mx-2">${violationData.fee + violationData.delay_fee}</p>
           </div>
           <p className="text-base ">FLL - Failure to Pay</p>
-          <p className="text-base ">Issue Date {violationData.issue_date}</p>
-          <p className="text-base ">Plate {violationData.plateNumber}</p>
+          <p className="text-base ">Issue Date : {violationData.issue_date}</p>
+          <p className="text-base ">Plate : {violationData.plateNumber}</p>
           <div>
             <button
               className="text-base font-medium text-[#FA551D]"
