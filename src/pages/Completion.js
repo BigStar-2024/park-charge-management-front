@@ -10,9 +10,10 @@ import axios from "axios";
 function Completion(props) {
   const [messageBody, setMessageBody] = useState('');
   const { stripePromise } = props;
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const [parkName, setParkName] = useState('')
+  const [parkingChargeNumber, setParkingChargeNumber] = useState('')
   const [licensePlateNumber, setLicensePlateNumber] = useState("");
   const [amount, setAmount] = useState('');
   const [createDate, setCreateDate] = useState('');
@@ -28,7 +29,8 @@ function Completion(props) {
     const localStorageVar = localStorage.getItem('violationData');
     const parsedVar = JSON.parse(localStorageVar)
     setLicensePlateNumber(parsedVar.plateNumber);
-    setParkName(parsedVar.lot)
+    setParkName(parsedVar.lot);
+    setParkingChargeNumber(parsedVar.parkingChargeNumber)
 
 
     axios.get(`${BASE_URL}/payments_log`, {
@@ -128,6 +130,10 @@ function Completion(props) {
 
                 <div className="flex justify-center border rounded-[10px] border-[#091C62] bg-[white] mb-4 mx-10">
                   <div className="flex flex-col p-2">
+                    <div className="flex float-left">
+                      <p className='text-xl text-[brown] font-bold mt-4'>parkingChargeNumber : </p>
+                      <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {parkingChargeNumber}</p>
+                    </div>
                     <div className="flex float-left">
                       <p className='text-xl text-[brown] font-bold mt-4'>Lot : </p>
                       <p className='text-xl text-[#091C62] font-bold mt-4 ml-2'> {parkName}</p>
