@@ -45,10 +45,10 @@ const Step2 = ({ active, setActive }: props) => {
         <div className="h-auto border border-[#091C62] flex flex-col items-end px-4 py-2 mx-1">
           <p className="text-base font-medium">Parking Charge Notice: ${violationSelectedToPay.fee + violationSelectedToPay.delay_fee}</p>
           <p className="text-base font-medium">
-            Online Payment Convenience: $4.99 ??
+            Online Payment Convenience: ${violationSelectedToPay.fee}
           </p>
           <p className="text-base font-medium">
-            Total Parking Charge Notice: $94.99 ??
+            Total Parking Charge Notice: ${violationSelectedToPay.delay_fee}
           </p>
         </div>
         <div>
